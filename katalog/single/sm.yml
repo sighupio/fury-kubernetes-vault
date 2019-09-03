@@ -1,0 +1,19 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: statsd-exporter
+  name: statsd-exporter
+  namespace: monitoring
+spec:
+  endpoints:
+    - interval: 15s
+      port: metrics
+  jobLabel: statsd-exporter
+  namespaceSelector:
+    matchNames:
+      - vault
+  selector:
+    matchLabels:
+      k8s-app: statsd-exporter
