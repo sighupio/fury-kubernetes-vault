@@ -1,0 +1,14 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: vault
+
+bases:
+  - vendor/katalog/vault/aws
+
+secretGenerator:
+  - files:
+      - config/autounseal.hcl
+      - config/backend.hcl
+    behavior: merge
+    name: vault

@@ -1,0 +1,9 @@
+bases:
+  - name: vault/aws
+    version: master
+  - name: vault/single
+    version: master
+
+modules:
+  - name: vault/aws
+    version: master

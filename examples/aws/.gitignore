@@ -1,0 +1,4 @@
+vendor
+terraform.*
+.terraform
+config/*.hcl
