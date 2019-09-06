@@ -2,14 +2,14 @@ variable "region" {
   default = "eu-west-1"
 }
 
-variable "env" {
+variable "env" {
   default = "demo"
 }
 
-variable "write_capacity"{
+variable "write_capacity" {
   default = "10"
 }
 
-variable "read_capacity"{
+variable "read_capacity" {
   default = "10"
 }

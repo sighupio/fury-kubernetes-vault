@@ -62,7 +62,7 @@ resource "aws_dynamodb_table" "vault-backend" {
     type = "S"
   }
 
-  tags {
+  tags = {
     Name        = "vault-backend"
     Environment = "${var.env}"
   }
