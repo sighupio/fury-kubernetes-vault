@@ -1,4 +1,4 @@
-output "vault_autounseal_conf" {
+output "vault_backend_conf" {
   value = <<EOF
 storage "dynamodb" {
   region     = "${var.region}"
