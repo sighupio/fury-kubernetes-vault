@@ -68,3 +68,6 @@ resource "aws_dynamodb_table" "vault-backend" {
   }
 }
 
+resource "aws_iam_access_key" "vault_dynamodb_backend" {
+  user = aws_iam_user.kms_k8s_vault.name
+}
