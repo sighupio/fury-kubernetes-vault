@@ -1,0 +1,64 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: demo
+  name: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      serviceAccount: demo
+      containers:
+        - image: nginx
+          name: nginx
+          ports:
+            - name: http
+              containerPort: 80
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d
+              name: nginx
+        - image: vault
+          name: vault-agent
+          command:
+            - vault
+            - agent
+            - -config
+            - /etc/vault-agent/agent.hcl
+          env:
+            - name: VAULT_ADDR
+              value: http://vault:8200
+          volumeMounts:
+            - mountPath: /etc/vault-agent
+              name: vault-agent
+      volumes:
+        - name: vault-agent
+          configMap:
+            name: vault-agent
+        - name: nginx
+          configMap:
+            name: nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+  selector:
+    app: demo
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: demo

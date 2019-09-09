@@ -5,6 +5,7 @@ namespace: vault
 
 bases:
   - vendor/katalog/vault/aws
+  - demo
 
 secretGenerator:
   - files:
