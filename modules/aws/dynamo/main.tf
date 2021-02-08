@@ -12,7 +12,7 @@ resource "aws_iam_policy" "vault_dynamodb_backend" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": [ 
+      "Action": [
         "dynamodb:DescribeLimits",
         "dynamodb:DescribeTimeToLive",
         "dynamodb:ListTagsOfResource",
@@ -32,7 +32,7 @@ resource "aws_iam_policy" "vault_dynamodb_backend" {
         "dynamodb:DescribeTable"
       ],
       "Effect": "Allow",
-      "Resource": [ "${aws_dynamodb_table.vault-backend.arn}" ]
+      "Resource": ["${aws_dynamodb_table.vault-backend.arn}" ]
     }
   ]
 }
@@ -41,8 +41,8 @@ EOF
 
 resource "aws_iam_policy_attachment" "vault_dynamodb_backend" {
   name       = "vault-dynamodb-backend-${var.env}"
-  users      = ["${aws_iam_user.vault_dynamodb_backend.name}"]
-  policy_arn = "${aws_iam_policy.vault_dynamodb_backend.arn}"
+  users      = [aws_iam_user.vault_dynamodb_backend.name]
+  policy_arn = aws_iam_policy.vault_dynamodb_backend.arn
 }
 
 resource "aws_dynamodb_table" "vault-backend" {
@@ -64,7 +64,7 @@ resource "aws_dynamodb_table" "vault-backend" {
 
   tags = {
     Name        = "vault-backend"
-    Environment = "${var.env}"
+    Environment = var.env
   }
 }
 
