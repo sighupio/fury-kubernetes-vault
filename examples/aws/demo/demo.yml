@@ -15,7 +15,7 @@ spec:
       labels:
         app: demo
     spec:
-      serviceAccount: demo
+      serviceAccountName: demo
       containers:
         - image: nginx
           name: nginx
