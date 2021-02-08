@@ -1,3 +1,9 @@
+create-cluster-kind:
+	kind create cluster --config kind-config.yml --name vault
+	kind get kubeconfig --name vault > kubeconfig
+
+destroy-kind:
+	kind delete cluster --name vault
 
 install:
 	furyctl install
@@ -24,7 +30,7 @@ expose:
 	kubectl port-forward -n vault svc/vault 8200:8200
 
 vault-init:
-	VAULT_ADDR=http://127.0.0.1:8200 vault operator init 
+	VAULT_ADDR=http://127.0.0.1:8200 vault operator init
 	@echo
 	@echo TAKE NOTE OF THE GENERATED KEYS/TOKEN
 	@echo
