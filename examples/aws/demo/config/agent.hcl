@@ -5,6 +5,7 @@ vault {
 
 auto_auth {
   method "kubernetes" {
+    mount_path = "auth/kubernetes"
     config = {
       role= "demo"
     }
