@@ -13,3 +13,11 @@ secretGenerator:
   - files:
       - config/config.hcl
     name: vault
+
+images:
+  - name: prom/statsd-exporter
+    newName: prom/statsd-exporter
+    newTag: v0.19.1
+  - name: vault
+    newName: vault
+    newTag: 1.6.2
