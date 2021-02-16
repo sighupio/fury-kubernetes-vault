@@ -17,14 +17,14 @@ spec:
     spec:
       serviceAccount: vault
       containers:
-        - image: prom/statsd-exporter:v0.12.2
+        - image: prom/statsd-exporter
           name: statsd-exporter
           ports:
             - name: statsd-port
               containerPort: 9125
             - name: metrics
               containerPort: 9102
-        - image: vault:1.2.2
+        - image: vault
           name: vault
           env:
             - name: POD_IP
