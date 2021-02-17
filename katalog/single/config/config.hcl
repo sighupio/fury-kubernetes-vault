@@ -2,10 +2,14 @@ listener "tcp" {
     address = "0.0.0.0:8200"
     cluster_address = "0.0.0.0:8201"
     tls_disable = "true"
+    telemetry {
+      unauthenticated_metrics_access = true
+    }
 }
 
 telemetry {
-  statsd_address = "localhost:9125"
+  prometheus_retention_time = "30s"
+  disable_hostname = true
 }
 
 ui = true
