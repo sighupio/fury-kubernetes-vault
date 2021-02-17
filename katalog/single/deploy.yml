@@ -16,14 +16,6 @@ spec:
         app: vault
     spec:
       serviceAccount: vault
-      containers:
-        - image: prom/statsd-exporter
-          name: statsd-exporter
-          ports:
-            - name: statsd-port
-              containerPort: 9125
-            - name: metrics
-              containerPort: 9102
         - image: vault
           name: vault
           env:
@@ -61,22 +53,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: vault
+  labels:
+    k8s-app: vault
 spec:
   ports:
     - name: http
       port: 8200
-  selector:
-    app: vault
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: statsd-exporter
-  labels:
-    k8s-app: statsd-exporter
-spec:
-  ports:
-    - name: metrics
-      port: 9102
   selector:
     app: vault
