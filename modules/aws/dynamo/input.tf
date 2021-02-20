@@ -15,5 +15,6 @@ variable "read_capacity" {
 }
 
 variable "tags" {
-  type = map(string)
+  type    = map(string)
+  default = {}
 }
