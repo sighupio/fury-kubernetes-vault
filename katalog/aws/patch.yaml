@@ -1,10 +1,8 @@
 ---
 - op: add
-  path: /spec/template/spec/containers/1/command/-
-  value:
-    -config=/etc/vault/autounseal.hcl
+  path: /spec/template/spec/containers/0/command/-
+  value: -config=/etc/vault/autounseal.hcl
 
 - op: add
-  path: /spec/template/spec/containers/1/command/-
-  value:
-    -config=/etc/vault/backend.hcl
+  path: /spec/template/spec/containers/0/command/-
+  value: -config=/etc/vault/backend.hcl

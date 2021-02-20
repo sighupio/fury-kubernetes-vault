@@ -3,17 +3,18 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    k8s-app: statsd-exporter
-  name: statsd-exporter
+    k8s-app: vault
+  name: vault
   namespace: monitoring
 spec:
   endpoints:
     - interval: 15s
       port: metrics
-  jobLabel: statsd-exporter
+      params:
+        format: ["prometheus"]
   namespaceSelector:
     matchNames:
       - vault
   selector:
     matchLabels:
-      k8s-app: statsd-exporter
+      k8s-app: vault
