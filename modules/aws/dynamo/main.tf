@@ -62,10 +62,10 @@ resource "aws_dynamodb_table" "vault-backend" {
     type = "S"
   }
 
-  tags = {
+  tags = merge(var.tags,{
     Name        = "vault-backend"
     Environment = var.env
-  }
+  })
 }
 
 resource "aws_iam_access_key" "vault_dynamodb_backend" {
