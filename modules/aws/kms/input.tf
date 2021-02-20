@@ -3,7 +3,7 @@ variable "region" {
 }
 
 variable "name" {
-  type string
+  type = string
 }
 
 variable "env" {
