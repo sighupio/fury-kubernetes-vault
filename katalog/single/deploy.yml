@@ -16,6 +16,7 @@ spec:
         app: vault
     spec:
       serviceAccount: vault
+      containers:
         - image: vault
           name: vault
           env:
