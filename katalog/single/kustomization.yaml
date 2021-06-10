@@ -8,6 +8,7 @@ resources:
   - sm.yml
   - rbac.yml
   - ns.yml
+  - pm.yml
 
 secretGenerator:
   - files:
@@ -15,9 +16,6 @@ secretGenerator:
     name: vault
 
 images:
-  - name: prom/statsd-exporter
-    newName: prom/statsd-exporter
-    newTag: v0.19.1
   - name: vault
     newName: vault
-    newTag: 1.6.2
+    newTag: 1.7.2
