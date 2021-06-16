@@ -9,10 +9,15 @@ resource "aws_kms_key" "kms_k8s_vault" {
   deletion_window_in_days = 30
   enable_key_rotation     = true
 
-  tags = {
+  tags = merge(var.tags,{
     "Usage" = "Vault"
     "Env"   = var.env
-  }
+  })
+}
+
+resource "aws_kms_alias" "kms_k8s_vault" {
+  name          = "alias/${var.name}"
+  target_key_id = aws_kms_key.kms_k8s_vault.key_id
 }
 
 resource "aws_iam_user" "kms_k8s_vault" {

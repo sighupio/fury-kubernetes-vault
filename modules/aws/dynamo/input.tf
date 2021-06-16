@@ -13,3 +13,8 @@ variable "write_capacity" {
 variable "read_capacity" {
   default = "10"
 }
+
+variable "tags" {
+  type    = map(string)
+  default = {}
+}
